@@ -1,0 +1,35 @@
+﻿@model List<WebLogger.Models.LoggerLogModel>
+
+@{
+    ViewBag.Title = "Log";
+}
+
+Enter a Log:
+<form method="POST" action="@Url.Action("Log", "Logger")">
+    <label>Your Name: <input id="CreatedBy" name="CreatedBy" type="text"/></label>
+    <label>Your Entry: <input id="LogEntry" name="LogEntry" type="text"></label>
+    <input type="submit" value="Submit"/>
+</form>
+
+Current Log:
+
+<table>
+    <tr>
+        <td>Log Id</td>
+        <td>Entered By</td>
+        <td>Log Entry</td>
+        <td>Entered On</td>
+    </tr>
+@foreach (var log in Model)
+{
+    <tr>
+        <td>@log.LogId</td>
+        <td>@log.CreatedBy</td>
+        <td>@log.LogEntry</td>
+        <td>@log.CreatedOn.ToString("yyyy-MM-dd HH:mm:ss")</td>
+        
+    </tr>
+    
+}
+    
+</table>
